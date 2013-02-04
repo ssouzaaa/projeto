@@ -1,4 +1,4 @@
-package Teste;
+package TestItalo;
 
 import static org.junit.Assert.*;
 
@@ -6,14 +6,15 @@ import javax.swing.ImageIcon;
 
 import org.junit.*;
 
-import Tabuleiro.Botao;
+import Tabuleiro.PeçaTabuleiro;
+import Tabuleiro.Tabuleiro;
 
 public class BotaoTest {
 
 	
 	@Test
 	public void novaPartidaTest(){
-		Botao b = new Botao(0,0);
+		PeçaTabuleiro b = new PeçaTabuleiro(0,0, new Tabuleiro());
 		assertFalse(b.getPordi());
 		assertFalse(b.getEhDama());
 		b.setPordi(true);
@@ -29,7 +30,7 @@ public class BotaoTest {
 	}
 	@Test
 	public void testPosicao(){
-		Botao b = new Botao(0,0);
+		PeçaTabuleiro b = new PeçaTabuleiro(0,0, new Tabuleiro());
 		int[] p = b.posicao();
 		if(!(p[0]==0 & p[1]==0)){
 			fail("Não deveria ter entrado");
