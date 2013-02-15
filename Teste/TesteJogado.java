@@ -7,23 +7,15 @@ import Tabuleiro.*;
 
 public class TesteJogado {
 
-	private Jogado jogado;
+	private Jogador jogado;
 	
 	@Before
 	public void setUp(){
-		this.jogado = new Jogado("gilson");
+		this.jogado = new Jogador("gilson");
 	}
 	@After
 	public void tearDown(){
 		
-	}
-	@Test
-	public void qualJogadoTest(){
-		if(this.jogado.getQualogado()){
-			fail("não deveria ter entrado");
-		}
-		this.jogado.setQualJogado(true);
-		assertTrue(this.jogado.getQualogado());
 	}
 	@Test
 	public void nomeDoJogadoTest(){
