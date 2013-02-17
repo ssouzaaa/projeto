@@ -1,5 +1,7 @@
 package Tabuleiro;
 
+import Grafico.EventoBotaoBranco;
+
 public class GerenciadorDePonto {
 
 	private static int CONT = 0;
@@ -65,7 +67,11 @@ public class GerenciadorDePonto {
 	 * @param jogado para dequementa a pontuação do jogado em questam.
 	 */
 	public void rodada(TrocaDePeçasAbstract troca,Jogado jogado,int linha,int coluna,int linha2,int coluna2){
-		jogado.setPonto();
+		int[] comeu = troca.calculaPeçaComida(linha, coluna, linha2, coluna2);
+		if(comeu[0] != -1){
+			jogado.setPonto();
+			troca.trocaParaCasabranca(comeu[0],comeu[1]);
+		}
 		if(this.botao[linha][coluna].getTipoBotao() != 2 & this.botao[linha2][coluna2].getTipoBotao() != 2){
 			if(this.botao[linha][coluna].getEhDama()){
 				troca.trocaDeDama(linha, coluna, linha2, coluna2);
@@ -77,6 +83,8 @@ public class GerenciadorDePonto {
 			}else{
 				troca.trocaDePeçaComida(linha, coluna, linha2, coluna2, false);
 			}
+			EventoBotaoBranco.LINHA(linha2);
+			EventoBotaoBranco.COLUNA(coluna2);
 		}
 	}
 	public GerenciadorDePonto setLinha(int linha){

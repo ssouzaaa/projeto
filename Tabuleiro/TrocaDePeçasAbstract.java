@@ -1,5 +1,7 @@
 package Tabuleiro;
 
+import Grafico.EventoBotaoBranco;
+import Imagens.Imagens;
 import Interfaces.TrocaDePeçasIF;
 
 public abstract class TrocaDePeçasAbstract implements TrocaDePeçasIF{
@@ -15,6 +17,13 @@ public abstract class TrocaDePeçasAbstract implements TrocaDePeçasIF{
 	
 	public abstract void trocaDePeçaComida(int linha, int coluna, int linha2,int coluna2, boolean qualPeça);
 	
+	public void trocaParaCasabranca(int linha,int coluna){
+		Imagens imagem = new Imagens();
+		Botao[][] botao = this.tabuleiro.getBotao();
+		botao[linha][coluna].setImagemBotao(imagem.getBranco());
+		botao[linha][coluna].setTipoBotao(1);
+		botao[linha][coluna].setEvento(new EventoBotaoBranco(linha,coluna,this.tabuleiro));
+	}
 	protected int[] calculaPeçaComida(int linha,int coluna,int linha2,int coluna2){
 		int[] posicao = {-1,-1};
 		if(linha - 2 == linha2){

@@ -25,7 +25,7 @@ public class Botao implements BotaoIF,Serializable{
 		this.ehDama = false;
 		this.clicou = false;
 		this.tipoBotao = 0;
-		this.evento = null;;
+		this.evento = null;
 	}
 	public void setEvento(EventoBotaoAbstract evento){
 		this.evento = evento;
